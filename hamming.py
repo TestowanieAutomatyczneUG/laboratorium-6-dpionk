@@ -2,12 +2,14 @@ import unittest
 
 class Hamming:
 	def distance(self,genotype1,genotype2):
-		distance = 0
-		for i in range (0, len(genotype1)):
-			if genotype1[i] != genotype2[i]:
-				distance += 1
-		return distance
-
+		if len(genotype1) != len(genotype2):
+			raise ValueError("Podano złe wartości")
+		else:
+			distance = 0
+			for i in range (0, len(genotype1)):
+				if genotype1[i] != genotype2[i]:
+					distance += 1
+			return distance
 hamming = Hamming()
 
 
@@ -22,19 +24,15 @@ class HammingTest(unittest.TestCase):
 		self.assertEqual(hamming.distance("GGACTGAAATCTG", "GGACTGAAATCTG"), 0)
 	def test_long_different_strands(self):
 		self.assertEqual(hamming.distance("GGACGGATTCTG", "AGGACGGATTCT"), 9)
-	@unittest.skip("Not done")
 	def test_disallow_first_strand_longer(self):
 		with self.assertRaisesWithMessage(ValueError):
 			hamming.distance("AATG", "AAA")
-	@unittest.skip("Not done")
 	def test_disallow_second_strand_longer(self):
 		with self.assertRaisesWithMessage(ValueError):
 			hamming.distance("ATA", "AGTG")
-	@unittest.skip("Not done")
 	def test_disallow_left_empty_strand(self):
 		with self.assertRaisesWithMessage(ValueError):
 			hamming.distance("", "G")
-	@unittest.skip("Not done")
 	def test_disallow_right_empty_strand(self):
 		with self.assertRaisesWithMessage(ValueError):
 			hamming.distance("G", "")
@@ -45,6 +43,5 @@ class HammingTest(unittest.TestCase):
 			self.assertRaisesRegex
 		except AttributeError:
 			self.assertRaisesRegex = self.assertRaisesRegexp
-	@unittest.skip("Not done")
 	def assertRaisesWithMessage(self, exception):
 		return self.assertRaisesRegex(exception, r".+")
