@@ -35,8 +35,11 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
       - name: Run tests for roman.py
-        run: python -m unittest roman.py         
+        run: python -m unittest roman.py   
+        shell: pwsh
       - name: Run test for hammington.py
+        shell: pwsh
         run: python -m unittest hammington.py   
       - name: Run test for song.py
         run: python -m unittest song.py   
+        shell: pwsh
