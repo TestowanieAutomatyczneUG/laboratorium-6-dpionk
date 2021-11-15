@@ -36,7 +36,7 @@ jobs:
           echo test, and deploy your project.
       - name: Run tests for roman.py
         run: python -m unittest roman.py         
-      -name: Run test for hammington.py
+      - name: Run test for hammington.py
         run: python -m unittest hammington.py   
-      -name: Run test for song.py
+      - name: Run test for song.py
         run: python -m unittest song.py   
