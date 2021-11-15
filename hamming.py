@@ -1,8 +1,6 @@
 import unittest
 
-if __name__ == "__main__":
-    unittest.main()
-	
+
 class Hamming:
 	def distance(self,genotype1,genotype2):
 		if len(genotype1) != len(genotype2):
@@ -48,3 +46,7 @@ class HammingTest(unittest.TestCase):
 			self.assertRaisesRegex = self.assertRaisesRegexp
 	def assertRaisesWithMessage(self, exception):
 		return self.assertRaisesRegex(exception, r".+")
+
+if __name__ == "__main__":
+    unittest.main()
+	
