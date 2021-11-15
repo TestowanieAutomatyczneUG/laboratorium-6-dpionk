@@ -2,11 +2,8 @@ import unittest
 
 class RomanNumerals:
 	def roman(self, number):
-		symbols = [ "C", "XC", "L", "XL","X", "IX", "V", "IV",
-			"I"
-			]
-		values = [100, 90, 50, 40, 10, 9, 5, 4, 1
-			]
+		symbols = ["D", "CD",  "C", "XC", "L", "XL","X", "IX", "V", "IV", "I" ]
+		values = [500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1 ]
 		roman = ""
 		i = 0
 		while number > 0:
@@ -45,13 +42,10 @@ class RomanNumeralsTest(unittest.TestCase):
 		self.assertEqual(roman(93), "XCIII")
 	def test_100_is_a_single_c(self):
 		self.assertEqual(roman(141), "CXLI")
-	@unittest.skip("Not done")
 	def test_60_being_50_10_is_lx(self):
 		self.assertEqual(roman(163), "CLXIII")
-	@unittest.skip("Not done")
 	def test_400_being_500_100_is_cd(self):
 		self.assertEqual(roman(402), "CDII")
-	@unittest.skip("Not done")
 	def test_500_is_a_single_d(self):
 		self.assertEqual(roman(575), "DLXXV")
 	@unittest.skip("Not done")
