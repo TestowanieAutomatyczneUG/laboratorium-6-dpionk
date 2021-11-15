@@ -28,3 +28,5 @@ jobs:
         run: python hamming.py
       - name: Run tests for roman.py
         run: python roman.py
+      - name: Run tests for song.py
+        run: python song.py
