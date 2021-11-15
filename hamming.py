@@ -2,7 +2,9 @@ import unittest
 
 class Hamming:
 	def distance(self,genotype1,genotype2):
-		return 0
+		if genotype1 == genotype2: 
+			return 0
+		return 1
 
 hamming = Hamming()
 
@@ -10,10 +12,8 @@ hamming = Hamming()
 class HammingTest(unittest.TestCase):
 	def test_empty_strands(self):
 		self.assertEqual(hamming.distance("", ""), 0)
-	@unittest.skip("Not done")
 	def test_single_letter_identical_strands(self):
 		self.assertEqual(hamming.distance("A", "A"), 0)
-	@unittest.skip("Not done")
 	def test_single_letter_different_strands(self):
 		self.assertEqual(hamming.distance("G", "T"), 1)
 	@unittest.skip("Not done")
