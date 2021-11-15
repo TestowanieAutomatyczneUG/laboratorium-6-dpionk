@@ -1,5 +1,8 @@
 import unittest
 
+if __name__ == "__main__":
+    unittest.main()
+	
 class Hamming:
 	def distance(self,genotype1,genotype2):
 		if len(genotype1) != len(genotype2):

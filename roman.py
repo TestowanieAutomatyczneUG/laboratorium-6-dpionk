@@ -1,5 +1,8 @@
 import unittest
 
+if __name__ == "__main__":
+    unittest.main()
+
 class RomanNumerals:
 	def roman(self, number):
 		symbols = ["M", "CM", "D", "CD",  "C", "XC", "L", "XL","X", "IX", "V", "IV", "I" ]
