@@ -2,8 +2,20 @@ import unittest
 
 class RomanNumerals:
 	def roman(self, number):
-		if number < 4:
-			return number * "I"
+		symbols = [ "V", "IV",
+			"I"
+			]
+		values = [5, 4,
+			1
+			]
+		roman = ""
+		i = 0
+		while number > 0:
+			for j in range(number // values[i]):
+				roman += symbols[i]
+				number -= values[i]
+			i += 1
+		return roman
 
 roman = RomanNumerals().roman
 
@@ -16,13 +28,10 @@ class RomanNumeralsTest(unittest.TestCase):
 
 	def test_3_is_three_i_s(self):
 		self.assertEqual(roman(3), "III")
-	@unittest.skip("Not done")
 	def test_4_being_5_1_is_iv(self):
 		self.assertEqual(roman(4), "IV")
-	@unittest.skip("Not done")
 	def test_5_is_a_single_v(self):
 		self.assertEqual(roman(5), "V")
-	@unittest.skip("Not done")
 	def test_6_being_5_1_is_vi(self):
 		self.assertEqual(roman(6), "VI")
 	@unittest.skip("Not done")
