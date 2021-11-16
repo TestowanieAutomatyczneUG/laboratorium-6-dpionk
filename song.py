@@ -17,6 +17,9 @@ class Song:
 		songToGet = ""
 		if isinstance(arg, int):
 			songToGet = song[arg-1]
+		if isinstance(arg,list):
+			for i in range(arg[0], arg[1] + 1):
+				songToGet += song[i - 1]
 		if arg == "whole":
 			for i in song:
 				songToGet += i
@@ -47,7 +50,6 @@ class SongTest(unittest.TestCase):
 
 	def test_single_verse_middle(self):
 		self.assertEqual(getSong(6),"On the sixth day of Christmas my true love gave to me: six Geese-a-Laying, five Gold Rings, four Calling Birds, three French Hens, two Turtle Doves, and a Partridge in a Pear Tree./n")
-	@unittest.skip("Not done")
 	def test_multipleVerses_1_to_12(self):
 		self.assertEqual(getSong([1,12]), "On the first day of Christmas my true love gave to me: a Partridge in a Pear Tree./n"+
 "On the second day of Christmas my true love gave to me: two Turtle Doves, and a Partridge in a Pear Tree./n"+
@@ -62,12 +64,11 @@ class SongTest(unittest.TestCase):
 "On the eleventh day of Christmas my true love gave to me: eleven Pipers Piping, ten Lords-a-Leaping, nine Ladies Dancing, eight Maids-a-Milking, seven Swans-a-Swimming, six Geese-a-Laying, five Gold Rings, four Calling Birds, three French Hens, two Turtle Doves, and a Partridge in a Pear Tree./n"+
 "On the twelfth day of Christmas my true love gave to me: twelve Drummers Drumming, eleven Pipers Piping, ten Lords-a-Leaping, nine Ladies Dancing, eight Maids-a-Milking, seven Swans-a-Swimming, six Geese-a-Laying, five Gold Rings, four Calling Birds, three French Hens, two Turtle Doves, and a Partridge in a Pear Tree./n")
 
-	@unittest.skip("Not done")	
 	def test_multipleVerses_1_to_3(self):
 		self.assertEqual(getSong([1,3]),  "On the first day of Christmas my true love gave to me: a Partridge in a Pear Tree./n"+
 "On the second day of Christmas my true love gave to me: two Turtle Doves, and a Partridge in a Pear Tree./n"+
 "On the third day of Christmas my true love gave to me: three French Hens, two Turtle Doves, and a Partridge in a Pear Tree./n" )
-	@unittest.skip("Not done")
+
 	def test_multipleVerses_3_to_8(self):
 		self.assertEqual(getSong([3,8]),  "On the third day of Christmas my true love gave to me: three French Hens, two Turtle Doves, and a Partridge in a Pear Tree./n"+
 "On the fourth day of Christmas my true love gave to me: four Calling Birds, three French Hens, two Turtle Doves, and a Partridge in a Pear Tree./n"+
@@ -75,7 +76,7 @@ class SongTest(unittest.TestCase):
 "On the sixth day of Christmas my true love gave to me: six Geese-a-Laying, five Gold Rings, four Calling Birds, three French Hens, two Turtle Doves, and a Partridge in a Pear Tree./n"+
 "On the seventh day of Christmas my true love gave to me: seven Swans-a-Swimming, six Geese-a-Laying, five Gold Rings, four Calling Birds, three French Hens, two Turtle Doves, and a Partridge in a Pear Tree./n"+
 "On the eighth day of Christmas my true love gave to me: eight Maids-a-Milking, seven Swans-a-Swimming, six Geese-a-Laying, five Gold Rings, four Calling Birds, three French Hens, two Turtle Doves, and a Partridge in a Pear Tree./n")
-	@unittest.skip("Not done")	
+
 	def test_multipleVerses_8_to_12(self):
 		self.assertEqual(getSong([8,12]), "On the eighth day of Christmas my true love gave to me: eight Maids-a-Milking, seven Swans-a-Swimming, six Geese-a-Laying, five Gold Rings, four Calling Birds, three French Hens, two Turtle Doves, and a Partridge in a Pear Tree./n"+
 "On the ninth day of Christmas my true love gave to me: nine Ladies Dancing, eight Maids-a-Milking, seven Swans-a-Swimming, six Geese-a-Laying, five Gold Rings, four Calling Birds, three French Hens, two Turtle Doves, and a Partridge in a Pear Tree./n"+
