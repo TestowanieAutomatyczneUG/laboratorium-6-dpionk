@@ -15,6 +15,8 @@ class Song:
 "On the eleventh day of Christmas my true love gave to me: eleven Pipers Piping, ten Lords-a-Leaping, nine Ladies Dancing, eight Maids-a-Milking, seven Swans-a-Swimming, six Geese-a-Laying, five Gold Rings, four Calling Birds, three French Hens, two Turtle Doves, and a Partridge in a Pear Tree./n",
 "On the twelfth day of Christmas my true love gave to me: twelve Drummers Drumming, eleven Pipers Piping, ten Lords-a-Leaping, nine Ladies Dancing, eight Maids-a-Milking, seven Swans-a-Swimming, six Geese-a-Laying, five Gold Rings, four Calling Birds, three French Hens, two Turtle Doves, and a Partridge in a Pear Tree./n"]
 		songToGet = ""
+		if type(arg) not in [str, int, list]:
+			raise ValueError("Zły argument")
 		if isinstance(arg, list) and (len(arg) != 2 or not isinstance(arg[0], int) or not isinstance(arg[1],int) or arg[1] <= arg[0] or arg[0] < 1 or arg[1] > 12 ):
 			raise ValueError("Zły argument")
 		if isinstance(arg, str) and arg != "whole":
@@ -189,19 +191,19 @@ class SongTest(unittest.TestCase):
 	def test_disallow_verse_higher_than_12_2(self):
 		with self.assertRaisesWithMessage(ValueError):
 			getSong(343453453455)
-	@unittest.skip("Not done")
+
 	def test_disallow_verse_notInt(self):
 		with self.assertRaisesWithMessage(ValueError):
 			getSong([])
-	@unittest.skip("Not done")
+
 	def test_disallow_verse_notInt_2(self):
 		with self.assertRaisesWithMessage(ValueError):
 			getSong(3.45656776575)
-	@unittest.skip("Not done")
+
 	def test_disallow_verse_notInt_3(self):
 		with self.assertRaisesWithMessage(ValueError):
 			getSong({})
-	@unittest.skip("Not done")
+
 	def test_disallow_verse_notInt_4(self):
 		with self.assertRaisesWithMessage(ValueError):
 			getSong(True)
