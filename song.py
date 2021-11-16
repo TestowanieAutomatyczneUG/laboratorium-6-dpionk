@@ -15,7 +15,7 @@ class Song:
 "On the eleventh day of Christmas my true love gave to me: eleven Pipers Piping, ten Lords-a-Leaping, nine Ladies Dancing, eight Maids-a-Milking, seven Swans-a-Swimming, six Geese-a-Laying, five Gold Rings, four Calling Birds, three French Hens, two Turtle Doves, and a Partridge in a Pear Tree./n",
 "On the twelfth day of Christmas my true love gave to me: twelve Drummers Drumming, eleven Pipers Piping, ten Lords-a-Leaping, nine Ladies Dancing, eight Maids-a-Milking, seven Swans-a-Swimming, six Geese-a-Laying, five Gold Rings, four Calling Birds, three French Hens, two Turtle Doves, and a Partridge in a Pear Tree./n"]
 		songToGet = ""
-		if isinstance(arg, list) and (arg[1] <= arg[0] or arg[0] < 1):
+		if isinstance(arg, list) and (len(arg) != 2 or arg[1] <= arg[0] or arg[0] < 1):
 			raise ValueError("Zły argument")
 		if isinstance(arg, str) and arg != "whole":
 			raise ValueError("Zły argument")
@@ -107,19 +107,15 @@ class SongTest(unittest.TestCase):
 	def test_disallow_start_lower_than_1_2(self):
 		with self.assertRaisesWithMessage(ValueError):
 			getSong([-20,3])
-	@unittest.skip("Not done")
 	def test_disallow_only_one_value_in_array(self):
 		with self.assertRaisesWithMessage(ValueError):
 			getSong([-20])
-	@unittest.skip("Not done")
 	def test_disallow_only_one_value_in_array_2(self):
 		with self.assertRaisesWithMessage(ValueError):
 			getSong([3])
-	@unittest.skip("Not done")
 	def test_disallow_multiple_values_in_array(self):
 		with self.assertRaisesWithMessage(ValueError):
 			getSong([3,5,45645,True, "sdfsdf", None])
-	@unittest.skip("Not done")
 	def test_disallow_one_value_in_array(self):
 		with self.assertRaisesWithMessage(ValueError):
 			getSong([3])
