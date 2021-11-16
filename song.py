@@ -19,6 +19,8 @@ class Song:
 			raise ValueError("Zły argument")
 		if isinstance(arg, str) and arg != "whole":
 			raise ValueError("Zły argument")
+		if isinstance(arg, int) and arg not in [1,2,3,4,5,6,7,8,9,10,11,12]:
+			raise ValueError("Zły argument")
 		if isinstance(arg, int):
 			songToGet = song[arg-1]
 		if isinstance(arg,list):
@@ -171,19 +173,19 @@ class SongTest(unittest.TestCase):
 	def test_disallow_stop_ok_and_start_incorrect_3(self):
 		with self.assertRaisesWithMessage(ValueError):
 			getSong([3.5, 11])
-	@unittest.skip("Not done")
+
 	def test_disallow_verse_lower_than_1(self):
 		with self.assertRaisesWithMessage(ValueError):
 			getSong(0)
-	@unittest.skip("Not done")
+
 	def test_disallow_verse_lower_than_1_2(self):
 		with self.assertRaisesWithMessage(ValueError):
 			getSong(-345345)
-	@unittest.skip("Not done")
+
 	def test_disallow_verse_higher_than_12(self):
 		with self.assertRaisesWithMessage(ValueError):
 			getSong(13)
-	@unittest.skip("Not done")
+
 	def test_disallow_verse_higher_than_12_2(self):
 		with self.assertRaisesWithMessage(ValueError):
 			getSong(343453453455)
