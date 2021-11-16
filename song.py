@@ -15,6 +15,10 @@ class Song:
 "On the eleventh day of Christmas my true love gave to me: eleven Pipers Piping, ten Lords-a-Leaping, nine Ladies Dancing, eight Maids-a-Milking, seven Swans-a-Swimming, six Geese-a-Laying, five Gold Rings, four Calling Birds, three French Hens, two Turtle Doves, and a Partridge in a Pear Tree./n",
 "On the twelfth day of Christmas my true love gave to me: twelve Drummers Drumming, eleven Pipers Piping, ten Lords-a-Leaping, nine Ladies Dancing, eight Maids-a-Milking, seven Swans-a-Swimming, six Geese-a-Laying, five Gold Rings, four Calling Birds, three French Hens, two Turtle Doves, and a Partridge in a Pear Tree./n"]
 		songToGet = ""
+		if isinstance(arg, list) and arg[1] <= arg[0]:
+			raise ValueError("Zły argument")
+		if isinstance(arg, str) and arg != "whole":
+			raise ValueError("Zły argument")
 		if isinstance(arg, int):
 			songToGet = song[arg-1]
 		if isinstance(arg,list):
@@ -22,7 +26,7 @@ class Song:
 				songToGet += song[i - 1]
 		if arg == "whole":
 			for i in song:
-				songToGet += i
+				songToGet += i		
 		return songToGet
 
 getSong=Song().getSong
@@ -83,15 +87,14 @@ class SongTest(unittest.TestCase):
 "On the tenth day of Christmas my true love gave to me: ten Lords-a-Leaping, nine Ladies Dancing, eight Maids-a-Milking, seven Swans-a-Swimming, six Geese-a-Laying, five Gold Rings, four Calling Birds, three French Hens, two Turtle Doves, and a Partridge in a Pear Tree./n"+
 "On the eleventh day of Christmas my true love gave to me: eleven Pipers Piping, ten Lords-a-Leaping, nine Ladies Dancing, eight Maids-a-Milking, seven Swans-a-Swimming, six Geese-a-Laying, five Gold Rings, four Calling Birds, three French Hens, two Turtle Doves, and a Partridge in a Pear Tree./n"+
 "On the twelfth day of Christmas my true love gave to me: twelve Drummers Drumming, eleven Pipers Piping, ten Lords-a-Leaping, nine Ladies Dancing, eight Maids-a-Milking, seven Swans-a-Swimming, six Geese-a-Laying, five Gold Rings, four Calling Birds, three French Hens, two Turtle Doves, and a Partridge in a Pear Tree./n")
-	@unittest.skip("Not done")
+
 	def test_disallow_any_other_string_than_whole(self):
 		with self.assertRaisesWithMessage(ValueError):
 			getSong("wholp")
-	@unittest.skip("Not done")
+
 	def test_disallow_any_other_string_than_whole(self):
 		with self.assertRaisesWithMessage(ValueError):
 			getSong("gsdfs")
-	@unittest.skip("Not done")	
 	def test_disallow_start_higher_than_stop(self):
 		with self.assertRaisesWithMessage(ValueError):
 			getSong([12,3])
@@ -203,3 +206,14 @@ class SongTest(unittest.TestCase):
 	def test_disallow_verse_notInt_4(self):
 		with self.assertRaisesWithMessage(ValueError):
 			getSong(True)
+
+	def setUp(self):
+		try:
+			self.assertRaisesRegex
+		except AttributeError:
+			self.assertRaisesRegex = self.assertRaisesRegexp
+	def assertRaisesWithMessage(self, exception):
+		return self.assertRaisesRegex(exception, r".+")
+
+if __name__ == "__main__":
+    unittest.main()
